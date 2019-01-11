@@ -1,0 +1,1 @@
+Write-Host "hi, iam webrcs agnet view from [vbscript]"
