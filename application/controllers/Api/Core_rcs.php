@@ -22,12 +22,12 @@ class Core_rcs extends CI_Controller {
 		$this->load->view('api_message');
 	}
 
-	public function authentication($secrete = '') {
+	public function authenticate($secrete = '') {
 		if ($this->Funcs->do_authenticated($secrete)) {
-			$this->Funcs->json_result('success', 'authentication');
+			$this->Funcs->json_result('success', 'secrete authenticate');
 			return true;
 		} else {
-			$this->Funcs->json_result('error', 'authentication');
+			$this->Funcs->json_result('error', 'secrete authenticate');
 			return false;
 		}
 	}
@@ -53,13 +53,23 @@ class Core_rcs extends CI_Controller {
 
 	public function push_command($cid = '') {
 		if ($cid) {
-			if ($this->Database->clients_push_command($cid, $cmd_data)) {
-				$this->Funcs->json_result('success', 'push command');
-				return true;
+			$cmd_get = $this->input->get('cmd_get', true);
+			$cmd_post = $this->input->post('cmd_post', true);
+			$cmd_data = $cmd_get || $cmd_post || '';
+
+			if ($cmd_data != '') {
+				if ($this->Database->clients_push_command($cid, $cmd_data)) {
+					$this->Funcs->json_result('success', 'push command');
+					return true;
+				} else {
+					$this->Funcs->json_result('error', 'push command');
+					return false;
+				}
 			} else {
-				$this->Funcs->json_result('error', 'push command');
+				$this->Funcs->json_result('error', 'command data empty');
 				return false;
 			}
+
 		} else {
 			$this->Funcs->json_result('error', 'client id missing');
 			return false;
