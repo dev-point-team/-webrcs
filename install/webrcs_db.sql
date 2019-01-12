@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `commands` (
 -- Table structure for table `results`
 --
 
-CREATE TABLE IF NOT EXISTS `datas` (
+CREATE TABLE IF NOT EXISTS `results` (
   `result_id` int(11) NOT NULL AUTO_INCREMENT,
   `result_post` longtext COLLATE utf8_unicode_ci NOT NULL,
   `result_file` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
