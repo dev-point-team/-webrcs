@@ -56,9 +56,9 @@ CREATE TABLE IF NOT EXISTS `commands` (
 
 CREATE TABLE IF NOT EXISTS `results` (
   `result_id` int(11) NOT NULL AUTO_INCREMENT,
-  `result_post` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `result_title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `result_data` longtext COLLATE utf8_unicode_ci NOT NULL,
   `result_file` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `command_id` int(11) COLLATE utf8_unicode_ci NOT NULL,
   `hardware_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `seen` int(1) NOT NULL,
   `result_timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
